@@ -17,12 +17,13 @@ def on_modified(event):
 def on_moved(event):
     print(f"ok ok ok, someone moved {event.src_path} to {event.dest_path}")
 
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,format='%(asctime)s - %(message)s',
                         datefmt='%Y-%m-%d %H:%M:%S')
     path = "C:/TestOrdner"
     event_handler = LoggingEventHandler()
-    
+
     event_handler.on_created = on_created
     event_handler.on_deleted = on_deleted
     event_handler.on_modified = on_modified
