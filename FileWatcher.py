@@ -4,6 +4,8 @@ import logging
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
 
+path = "C:/TestOrdner"
+
 
 def on_created(event):
     print(f"hey, {event.src_path} has been created!")
@@ -13,6 +15,10 @@ def on_deleted(event):
 
 def on_modified(event):
     print(f"hey buddy, {event.src_path} has been modified")
+    f=open(event.src_path, "r")
+    fl =f.readlines()
+    for yx in fl:
+        print (yx)
 
 def on_moved(event):
     print(f"ok ok ok, someone moved {event.src_path} to {event.dest_path}")
@@ -21,7 +27,6 @@ def on_moved(event):
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,format='%(asctime)s - %(message)s',
                         datefmt='%Y-%m-%d %H:%M:%S')
-    path = "C:/TestOrdner"
     event_handler = LoggingEventHandler()
 
     event_handler.on_created = on_created
