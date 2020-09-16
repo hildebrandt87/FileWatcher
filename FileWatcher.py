@@ -13,6 +13,7 @@ def on_created(event):
 def on_deleted(event):
     print(f"what the f**k! Someone deleted {event.src_path}!")
 
+#Ab hier wird die Datei gelesen
 def on_modified(event):
     print(f"hey buddy, {event.src_path} has been modified")
     f=open(event.src_path, "r")
